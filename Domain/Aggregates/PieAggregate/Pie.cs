@@ -1,6 +1,8 @@
 namespace Bakery.Domain.Aggregates.PieAggregate
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class Pie
     {
@@ -8,6 +10,7 @@ namespace Bakery.Domain.Aggregates.PieAggregate
         private string _name;
         private string _description;
         private Portions _portions;
+        private List<Ingredient> _ingredients = new();
 
         private Pie()
         {
@@ -18,12 +21,24 @@ namespace Bakery.Domain.Aggregates.PieAggregate
         public string Name => _name;
         public string Description => _description;
         public Portions Portions => _portions;
+        public IEnumerable<Ingredient> Ingredients => _ingredients;
 
         public static Pie Create(string name, string description, Portions portions)
         {
-            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
-            if (string.IsNullOrEmpty(description)) throw new ArgumentNullException(nameof(description));
-            if (portions == null) throw new ArgumentNullException(nameof(portions));
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            if (string.IsNullOrEmpty(description))
+            {
+                throw new ArgumentNullException(nameof(description));
+            }
+
+            if (portions == null)
+            {
+                throw new ArgumentNullException(nameof(portions));
+            }
 
             return new Pie
             {
@@ -32,6 +47,27 @@ namespace Bakery.Domain.Aggregates.PieAggregate
                 _description = description,
                 _portions = portions
             };
+        }
+
+        public void UpdateIngredients(IEnumerable<Ingredient> ingredients)
+        {
+            if (ingredients == null)
+            {
+                throw new ArgumentNullException(nameof(ingredients));
+            }
+
+            if (!ingredients.Any()) 
+            {
+                throw new ArgumentException("Must specify at least one ingredient.", nameof(ingredients));
+            }
+
+            if (ingredients.Sum(x => x.RelativeAmount) > 1.0)
+            {
+                throw new ArgumentException("The relative amount of all ingredients combined must add up to 1.0");
+            }
+
+            _ingredients.Clear();
+            _ingredients.AddRange(ingredients);
         }
     }
 }
