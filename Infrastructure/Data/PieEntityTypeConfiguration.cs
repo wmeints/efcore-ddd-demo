@@ -27,16 +27,8 @@ namespace Bakery.Infrastructure.Data
                 .UsePropertyAccessMode(PropertyAccessMode.Field);
 
             // Mark the portions property as an owned entity.
-            var portionsConfiguration = builder
-                .OwnsOne(x => x.Portions)
-                .UsePropertyAccessMode(PropertyAccessMode.Field);
+            var portionsConfiguration = builder.OwnsOne(x => x.Portions);
             
-            // This configuration is needed to make it so that EF Core 
-            // uses the parameterized constructor and tracks the fields
-            // of the portions class.
-            portionsConfiguration.Property(x=>x.Minimum).HasField("_min");
-            portionsConfiguration.Property(x=>x.Maximum).HasField("_max");
-
             // Make sure EF Core knows about the backing field for the owned entity.
             builder.Navigation(x => x.Portions).Metadata.SetField("_portions");
         }
