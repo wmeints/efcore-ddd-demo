@@ -61,7 +61,7 @@ namespace Bakery.Domain.Aggregates.PieAggregate
                 throw new ArgumentException("Must specify at least one ingredient.", nameof(ingredients));
             }
 
-            if (ingredients.Sum(x => x.RelativeAmount) > 1.0)
+            if (ingredients.Sum(x => x.RelativeAmount) != 1.0)
             {
                 throw new ArgumentException("The relative amount of all ingredients combined must add up to 1.0");
             }

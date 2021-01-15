@@ -11,7 +11,7 @@ namespace Bakery.Domain.Aggregates.PieAggregate
         public Ingredient(string name, bool isAllergen, double relativeAmount)
         {
             if(string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
-            if(relativeAmount <= 0.0) throw new ArgumentException("RelativeAmount must be larger than 0.0");
+            if(relativeAmount > 1.0 || relativeAmount <= 0.0) throw new ArgumentOutOfRangeException(nameof(relativeAmount));
 
             Name = name;
             IsAllergen = isAllergen;
