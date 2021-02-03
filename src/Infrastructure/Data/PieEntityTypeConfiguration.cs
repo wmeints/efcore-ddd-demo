@@ -1,6 +1,7 @@
 
 namespace Bakery.Infrastructure.Data
 {
+    using Bakery.Domain.Aggregates.CategoryAggregate;
     using Bakery.Domain.Aggregates.PieAggregate;
     using Microsoft.EntityFrameworkCore;
 
@@ -38,6 +39,8 @@ namespace Bakery.Infrastructure.Data
 
             // You can configure the rules for owned entities using the returned configuration builder instance.
             ingredientsConfiguration.Property(x => x.Name).HasMaxLength(250).IsRequired();
+
+            builder.HasOne<Category>().WithMany().HasForeignKey(x => x.CategoryId);
         }
     }
 }

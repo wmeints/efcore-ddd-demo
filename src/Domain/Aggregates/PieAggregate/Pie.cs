@@ -12,6 +12,7 @@ namespace Bakery.Domain.Aggregates.PieAggregate
         private Portions _portions;
         private List<Ingredient> _ingredients = new();
 
+
         private Pie()
         {
 
@@ -21,7 +22,8 @@ namespace Bakery.Domain.Aggregates.PieAggregate
         public string Name => _name;
         public string Description => _description;
         public Portions Portions => _portions;
-        public IEnumerable<Ingredient> Ingredients => _ingredients;
+        public IReadOnlyCollection<Ingredient> Ingredients => _ingredients;
+        public Guid CategoryId { get; private set; }
 
         public static Pie Create(string name, string description, Portions portions)
         {
@@ -56,7 +58,7 @@ namespace Bakery.Domain.Aggregates.PieAggregate
                 throw new ArgumentNullException(nameof(ingredients));
             }
 
-            if (!ingredients.Any()) 
+            if (!ingredients.Any())
             {
                 throw new ArgumentException("Must specify at least one ingredient.", nameof(ingredients));
             }

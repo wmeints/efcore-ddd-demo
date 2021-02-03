@@ -29,7 +29,8 @@ namespace Bakery.Infrastructure.Data
         public async Task<Pie> FindByIdAsync(Guid id)
         {
             return await _applicationDbContext.Pies
-                .Include(x => x.Portions)
+                .Include(x => x.Portions).AsSingleQuery()
+                .Include(x => x.Ingredients).AsSplitQuery()
                 .SingleOrDefaultAsync(x => x.Id == id);
         }
 
