@@ -26,5 +26,6 @@ for this purpose.
 I've created a couple of videos on the subject and wrote a series of blogposts.
 Please find them below:
 
-* Blog post series: TODO
-* Video series: TODO
+* [DDD in EF Core - Part 1](https://www.youtube.com/watch?v=bzI5g6PVM-I)
+* [DDD in EF Core - Part 2](https://www.youtube.com/watch?v=D1hSU-q3GLc)
+* [DDD in EF Core - Part 3](https://www.youtube.com/watch?v=tgDE87Y5t_8)
