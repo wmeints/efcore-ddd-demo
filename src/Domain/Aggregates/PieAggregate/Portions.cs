@@ -4,8 +4,8 @@ namespace Bakery.Domain.Aggregates.PieAggregate
 
     public record Portions
     {
-        public int Minimum { get; private set; }
-        public int Maximum { get; private set; }
+        public int Minimum { get; }
+        public int Maximum { get; }
 
         public Portions(int minimum, int maximum)
         {
