@@ -21,7 +21,6 @@ these steps to run the tests on your machine:
 No database is required, this code base uses the in-memory provider 
 for this purpose.
 
-
 ## Versions
 
 There are multiple versions of this demo:
