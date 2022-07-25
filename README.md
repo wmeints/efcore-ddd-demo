@@ -21,6 +21,14 @@ these steps to run the tests on your machine:
 No database is required, this code base uses the in-memory provider 
 for this purpose.
 
+
+## Versions
+
+There are multiple versions of this demo:
+
+- [.NET 5](https://github.com/wmeints/efcore-ddd-demo/tree/net50) - Shown in the DotNetFlix videos
+- [.NET 6](https://github.com/wmeints/efcore-ddd-demo/tree/main) - The latest version
+
 ## Learn more
 
 I've created a couple of videos on the subject and wrote a series of blogposts.
