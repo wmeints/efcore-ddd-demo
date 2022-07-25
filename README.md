@@ -6,7 +6,7 @@ it's pretty opinionated.
 
 ## System requirements
 
-* Dotnet 5.0 SDK
+* Dotnet 6.0 SDK
 * Visual Studio Code or a similar IDE/Editor
 
 ## Getting started
