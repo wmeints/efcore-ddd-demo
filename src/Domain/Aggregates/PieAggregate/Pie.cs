@@ -6,10 +6,6 @@ namespace Bakery.Domain.Aggregates.PieAggregate
 
     public class Pie
     {
-        private Guid _id;
-        private string _name;
-        private string _description;
-        private Portions _portions;
         private List<Ingredient> _ingredients = new();
 
         private Pie()
@@ -17,10 +13,10 @@ namespace Bakery.Domain.Aggregates.PieAggregate
             Ingredients = _ingredients.AsReadOnly();
         }
 
-        public Guid Id => _id;
-        public string Name => _name;
-        public string Description => _description;
-        public Portions Portions => _portions;
+        public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public Portions Portions { get; private set; }
         public IReadOnlyCollection<Ingredient> Ingredients { get; }
         public Guid CategoryId { get; private set; }
 
@@ -43,10 +39,10 @@ namespace Bakery.Domain.Aggregates.PieAggregate
 
             return new Pie
             {
-                _id = Guid.NewGuid(),
-                _name = name,
-                _description = description,
-                _portions = portions
+                Id = Guid.NewGuid(),
+                Name = name,
+                Description = description,
+                Portions = portions
             };
         }
 
