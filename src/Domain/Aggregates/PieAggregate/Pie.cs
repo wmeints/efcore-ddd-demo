@@ -12,17 +12,16 @@ namespace Bakery.Domain.Aggregates.PieAggregate
         private Portions _portions;
         private List<Ingredient> _ingredients = new();
 
-
         private Pie()
         {
-
+            Ingredients = _ingredients.AsReadOnly();
         }
 
         public Guid Id => _id;
         public string Name => _name;
         public string Description => _description;
         public Portions Portions => _portions;
-        public IReadOnlyCollection<Ingredient> Ingredients => _ingredients;
+        public IReadOnlyCollection<Ingredient> Ingredients { get; }
         public Guid CategoryId { get; private set; }
 
         public static Pie Create(string name, string description, Portions portions)
